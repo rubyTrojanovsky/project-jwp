@@ -32,8 +32,8 @@ Route::get('/artikel', [ArtikelController::class, 'all']);
 Route::post('/artikel', [ArtikelController::class, 'save'])->name('article.save');
 Route::delete('/artikel/{id}', [ArtikelController::class, 'delete'])->name('article.delete');
 Route::get('/artikel/{single}', [ArtikelController::class,'view'])->name('article.view'); //{single} adalah wildcard dari controller
-// Route::post('/artikel/komentar/{single}', [KomentarController::class,'saveKomentar'])->name('komentar.post'); 
-Route::get('/artikel/{single}', [KomentarController::class,'all'])->name('komentar.view');
+Route::get('/artikel/komentar/{id}', [KomentarController::class,'saveKomentar']);
+// Route::get('/artikel/{single}', [KomentarController::class,'all'])->name('komentar.view');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

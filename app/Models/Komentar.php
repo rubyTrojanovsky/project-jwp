@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Komentar extends Model
 {
     public $table ="komentar";
-    public function artikel(){
-        return $this->belongsTo(Artikel::class);
-    }
     protected $fillable = [
         'article_id',
         'nama',

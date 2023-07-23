@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Artikel;
+use App\Models\Komentar;
 
 class ArtikelController extends Controller
 {
@@ -16,26 +17,18 @@ class ArtikelController extends Controller
         ]);
     }
 
-    public function view(Artikel $single)
+    public function view(Artikel $single,)
     {
-        return $single;
-        
-        return $artikel;
+        $komentar=Komentar::latest()-> get();
         return view('single-post', [
             'title' => "Artikel",
             'artikel' => $single,
+            'komentar' => $komentar,
         ]);
     }
 
-    // public function add()
-    // {
-
-    //     return view('tulis-artikel', ['title' => "Artikel"]);
-    // }
-
     public function save(Request $request)
     {
-        // dd($request->isi_artikel);
         $artikel = Artikel::create([
             'judul' => $request->judul,
             'isi_artikel' => $request->isi_artikel,

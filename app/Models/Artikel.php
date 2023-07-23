@@ -12,8 +12,6 @@ class Artikel extends Model
         'judul',
         'isi_artikel',
     ];
-    public function komentar(){
-        return $this->hasMany(Komentar::class);
-    }
+
     use HasFactory;
 }

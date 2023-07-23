@@ -5,13 +5,14 @@
 <p>{{ $artikel->isi_artikel }}</p>
 
 <h4>Komentar</h4>
+@foreach ($komentar as $komentars)
 <div class="card mt-3" style="">
   <div class="card-body">
     <div class="row d-flex align-items-center">
       <div class="col-11">
-        <h5 class="card-title">nama</h5>
-        <h6 class="card-subtitle mb-2 text-muted">email</h6>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <h5 class="card-title">{{ $komentars->nama }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ $komentars->email }}</h6>
+        <p class="card-text">{{ $komentars->isi_komentar }}</p>
       </div>
       @auth
       <div class="col-1">
@@ -23,9 +24,11 @@
     </div>
   </div>
 </div>
+@endforeach
 
 @guest
-<form>
+<form action="/artikel/komentar/{$artikel->id}">
+  <input type="text" name="article_id" value={{$artikel->id}} hidden>
   <div class="mb-3 mt-3">
     <label for="email" class="form-label">Alamat Email</label>
     <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
@@ -38,7 +41,7 @@
       <label for="exampleFormControlTextarea1" class="form-label">Komentar</label>
       <textarea class="form-control" id="exampleFormControlTextarea1" name='isi_komentar' rows="3"></textarea>
     </div>
-  <button type="submit" method="POST" action="{{ route('komentar.post') }}" class="btn btn-primary">Submit</button>
+  <input type="submit" class="btn btn-primary" value="Simpan">
 </form>
 @endguest
 
