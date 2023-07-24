@@ -8,18 +8,24 @@ use App\Models\Komentar;
 
 class ArtikelController extends Controller
 {
+
+
     public function all()
     {
-        $artikel = Artikel::latest()-> get();
+        $artikel = Artikel::latest();
+        //jika ada pencarian pada search bar, maka artikel yang diambil akan sesuai dengan pencarian
+        if(request('cari')){
+           $artikel = Artikel::where('judul','like',"%".request('cari')."%");
+        }
         return view('artikel', [
             'title' => "Artikel",
-            'artikel' => $artikel
+            'artikel' => $artikel->get(), 
         ]);
     }
 
-    public function view(Artikel $single,)
+    public function view(Artikel $single)
     {
-        $komentar=Komentar::latest()-> get();
+        $komentar=Komentar::where('article_id',$single->id)->latest()->get();
         return view('single-post', [
             'title' => "Artikel",
             'artikel' => $single,

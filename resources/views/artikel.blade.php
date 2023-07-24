@@ -7,21 +7,24 @@
         <h3>Sumber informasi Sekolah Tinggi JeWePe</h3>
     </div>
     <div class="col-4">
-        <div class="input-group rounded px-5 ms-5">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <span class="input-group-text border-0" id="search-addon">
-              <i class="fas fa-search"></i>
-            </span>
-          </div>
+      <form class="form" action="/artikel" method="GET">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Cari Artikel" name="cari">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">Cari</button>
+        </div>
+      </div>
+    </form>
     </div>
   </div>
 
 
-
+{{-- button tambah artikel --}}
 @auth
 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Tambah Artikel</button>
 @endauth
 
+{{-- list artikel --}}
 @foreach ($artikel as $artikels)
 <article class="mt-2">
   <div class="row">
@@ -49,7 +52,7 @@
 
 @endsection
 
-
+{{-- modal tambah artikel --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
