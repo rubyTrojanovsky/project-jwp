@@ -33,6 +33,7 @@ Route::post('/artikel', [ArtikelController::class, 'save'])->name('article.save'
 Route::delete('/artikel/{id}', [ArtikelController::class, 'delete'])->name('article.delete');
 Route::get('/artikel/{single}', [ArtikelController::class,'view'])->name('article.view'); //{single} adalah wildcard dari controller
 Route::get('/artikel/komentar/{id}', [KomentarController::class,'saveKomentar']);
+Route::delete('/artikel/komentar/{id}', [KomentarController::class,'deleteKomentar'])->name('komentar.delete');
 // Route::get('/artikel/{single}', [KomentarController::class,'all'])->name('komentar.view');
 
 Route::get('/dashboard', function () {

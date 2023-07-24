@@ -15,11 +15,15 @@
         <p class="card-text">{{ $komentars->isi_komentar }}</p>
       </div>
       @auth
-      <div class="col-1">
-        <button type="button" class="btn btn-danger">
-          <span class="btn-label"><i class="bi-trash3"></i></span>
+      <form action="{{ route('komentar.delete', $komentars->id) }}" method="POST">
+        <span class="icon-input-btn">
+          <button type="submit" class="btn btn-danger">
+            <i class="bi-trash3"></i>
           </button>
-     </div>
+        </span>
+          @method('delete')
+          @csrf
+      </form>
      @endauth
     </div>
   </div>

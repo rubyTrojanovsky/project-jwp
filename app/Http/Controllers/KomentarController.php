@@ -14,4 +14,9 @@ class KomentarController extends Controller
         Komentar::create($komentar);
         return redirect()->back(); 
     }
+
+    public function deleteKomentar($id){
+        $komentar = Komentar::where('id',$id)->delete();
+        return redirect()->back(); 
+    }
 }
